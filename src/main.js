@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+//import axios for AJAX Calls
+window.axios = require('axios');
+
 Vue.use(VueRouter);
 
 //Components

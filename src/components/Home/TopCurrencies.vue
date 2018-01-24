@@ -8,7 +8,7 @@
                 <div class="col-sm">
                     <div class="top-currency">
 
-                        <h3 class="currency-price">&euro;15000</h3>
+                        <h3 class="currency-price">&euro; {{ this.returnValue(this.btc) }} </h3>
                         <h3 class="currency-name">Bitcoin in euro</h3>
 
                     </div>
@@ -18,7 +18,7 @@
 
                     <div class="top-currency">
 
-                        <h3 class="currency-price">&euro;1500</h3>
+                        <h3 class="currency-price">&euro; {{ this.returnValue(this.eth) }}</h3>
                         <h3 class="currency-name">Ether in euro</h3>
 
                     </div>
@@ -29,7 +29,7 @@
 
                     <div class="top-currency">
 
-                        <h3 class="currency-price">&euro;500</h3>
+                        <h3 class="currency-price">&euro; {{ this.returnValue(this.xrp) }}</h3>
                         <h3 class="currency-name">Ripple in euro</h3>
 
                     </div>
@@ -53,7 +53,67 @@
 <script>
 export default {
 
-    name: 'topcurrencies'
+    name: 'topcurrencies',
+
+    data() {
+        return {
+
+            btc: '',
+            xrp: '',
+            eth: ''
+
+        }
+    },
+
+    methods: {
+
+        returnValue(val) {
+            if(val == '') {
+                return 0;
+            } else {
+                return val
+            }
+        },
+
+        call() {
+
+            axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XRP&tsyms=USD,EUR')
+                .then((response) => {
+                
+                this.btc = response.data.BTC.EUR;
+                this.eth = response.data.ETH.EUR;
+                this.xrp = response.data.XRP.EUR;
+                
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        },
+
+        getValue() {
+
+            this.call();
+
+            setInterval(() => {
+
+                this.call();
+
+                console.log('fired');
+
+            }, 60000);
+
+
+
+        }
+
+    },
+
+    created() {
+
+        this.getValue();
+
+    }
 
 }
 </script>

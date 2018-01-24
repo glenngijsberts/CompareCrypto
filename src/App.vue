@@ -13,7 +13,7 @@
 <script>
 
 import Navigation from './components/Navigation.vue'
-import BottomFooter from './components/Footer.vue'
+import BottomFooter from './components/BottomFooter.vue'
 
 export default {
 
