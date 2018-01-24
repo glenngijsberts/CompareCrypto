@@ -1,15 +1,28 @@
 <template>
   <div id="app">
 
+    <Navigation />  
+
     <router-view></router-view>
+
+    <BottomFooter />
 
   </div>
 </template>
 
 <script>
+
+import Navigation from './components/Navigation.vue'
+import BottomFooter from './components/Footer.vue'
+
 export default {
 
   name: 'app',
+
+  components: {
+      Navigation,
+      BottomFooter
+  },
 
   data () {
     return {
@@ -33,6 +46,8 @@ export default {
   --grey: #787878;
   --lgrey: #c5c5c5;
   --black: #3e4552;
+
+  --transparantDark: rgba(32, 67, 101, 0.2784313725490196);
 }
 
 body {
@@ -118,7 +133,7 @@ a.btn i, button.btn i {
 }
 
 .subscribe-group {
-    background-color: var(--light);
+    background-color: var(--transparantDark);
     padding: 30px 25px 30px 25px;
     border-radius: 10px;
     width: 100%;
@@ -137,9 +152,7 @@ a.btn i, button.btn i {
 header.hero-home {
     height: 100vh;
     background-color: var(--brand);
-    // background: url(./img/bg-home.jpg) var(--brand);
-    // background-repeat: no-repeat;
-    // background-size: cover;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23' fill-opacity='0.08'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 .home-hero {
@@ -189,7 +202,7 @@ header.hero-home {
 }
 
 .home-hero .subscribe-section .subscribe-group {
-    background-color: var(--light);
+    background-color: var(--transparantDark);
     padding: 30px 25px 30px 25px;
     border-radius: 10px;
     width: 100%;
@@ -211,175 +224,7 @@ header.hero-home {
     color: var(--light);
 }
 
-/* Navigation */
 
-.navbar.navbar-white .navbar-brand {
-    color: var(--second);
-    font-weight: 700;
-}
-
-.navbar.navbar-white .navbar-nav > .active .nav-link {
-    color: var(--light);
-}
-
-.navbar.navbar-white .navbar-nav .nav-link {
-    color: var(--second);
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.navbar.navbar-white .navbar-toggler {
-    border: 2px solid var(--second);
-}
-
-.navbar.navbar-white .navbar-toggler > i {
-    color: var(--second);
-}
-
-/* Top currencies section */
-
-.top-currencies {
-    padding-top: 80px;
-    padding-bottom: 80px;
-    text-align: center;
-}
-
-.top-currencies .top-currency .currency-price {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 200;
-    color: var(--brand);
-    font-size: 48px;
-}
-
-.top-currencies .top-currency .currency-name {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 15px;
-    color: var(--grey);
-    letter-spacing: 0.1rem;
-}
-
-/* About */
-
-.about-crypto {
-    background-color: #fafafa;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.about-crypto .content {
-    padding: 20px;
-}
-
-.about-crypto .content i {
-    color: var(--light);
-    font-size: 32px;
-    position: relative;
-    top: -10px;
-}
-
-.about-crypto .content h4 {
-    text-transform: uppercase;
-    color: var(--grey);
-    letter-spacing: 0.1em;
-    font-size: 14px;
-}
-
-.about-crypto .content p {
-    color: var(--black);
-}
-
-.about-crypto .content a {
-    font-size: 14px;
-    color: var(--light);
-}
-
-.about-crypto .content a > i {
-    position: relative;
-    top: -1px;
-    left: 10px;
-    font-size: 10px;
-    transition: 500ms all;
-}
-
-.about-crypto .content a:hover > i {
-    left: 15px;
-    transition: 500ms all;
-}
-
-.about-crypto .content a:hover {
-    text-decoration: none;
-}
-
-/* Calculate */
-
-.calculate {
-    padding-top: 40px;
-    padding-bottom: 80px;
-    text-align: center;
-    background-color: var(--brand);
-}
-
-.calculate h2 {
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    color: var(--second);
-}
-
-.calculate h3 {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    color: var(--second);
-}
-
-.calculate .to {
-    font-size: 16px;
-    color: white;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-}
-
-footer .main-footer {
-    background-color: #fafafa;
-    padding: 60px;
-    border-top: 2px solid var(--light);
-}
-
-footer .main-footer h4 {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    color: var(--grey);
-}
-
-footer .main-footer ul {
-    list-style: none;
-    margin-left: -40px;
-}
-
-footer .main-footer ul li a {
-    font-size: 12px;
-    color: var(--grey);
-}
-
-footer .copyright-footer {
-    padding: 20px;
-    text-align: left;
-    background-color: var(--second);
-    border-top: 1px solid #f3f3f3;
-}
-
-footer .copyright-footer p {
-    font-size: 10px;
-    color: var(--brand);
-    margin: 0;
-    text-align: center;
-}
 
 @media (min-width: 992px) {
     .navbar-expand-lg .navbar-nav .nav-link {
