@@ -15,14 +15,14 @@
 
                     <div class="input-group subscribe-group">
                         <div class="input-group-prepend">
-                            <button class="btn btn-ghost-white dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bitcoin</button>
+                            <button class="btn btn-ghost-white dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ selectedCurrency }}</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Bitcoin</a>
-                                <a class="dropdown-item" href="#">Ether</a>
-                                <a class="dropdown-item" href="#">Ripple</a>
+                                <a class="dropdown-item" @click="setCurrency('Bitcoin')">Bitcoin</a>
+                                <a class="dropdown-item" @click="setCurrency('Ether')">Ether</a>
+                                <a class="dropdown-item" @click="setCurrency('Ripple')">Ripple</a>
                             </div>
                         </div>
-                        <input type="number" class="form-control" placeholder="1">
+                        <input type="number" class="form-control" v-model="inputCurrency" @change="calculate()">
                     </div>
 
                 </div>
@@ -33,13 +33,13 @@
 
                     <div class="input-group subscribe-group">
                         <div class="input-group-prepend">
-                            <button class="btn btn-ghost-white dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dollar</button>
+                            <button class="btn btn-ghost-white dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ valuta }}</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Dollar</a>
-                                <a class="dropdown-item" href="#">Euro</a>
+                                <a class="dropdown-item" @click="setValuta('Euro')">Euro</a>
+                                <a class="dropdown-item" @click="setValuta('Dollar')">Dollar</a>
                             </div>
                         </div>
-                        <input type="number" class="form-control" aria-label="Text input with dropdown button" placeholder="15000">
+                        <input type="number" class="form-control" v-model="outputVal" disabled>
                     </div>
 
                 </div>
@@ -47,7 +47,7 @@
 
             <div class="row mt-5">
                 <div class="col-sm">
-                    <h3>1 Bitcoin is nu 15000 dollar waard</h3>
+                    <h3>{{ inputCurrency }} {{ selectedCurrency }} is nu {{ outputVal }} {{ valuta }} waard</h3>
                 </div>
             </div>
 
@@ -60,7 +60,103 @@
 <script>
 export default {
 
-    name: 'calculate'
+    name: 'calculate',
+
+    data() {
+        return {
+
+            inputCurrency: 1,
+            selectedCurrency: 'Bitcoin',
+            outputVal: 9900,
+            valuta: 'Euro',
+
+            btcEur: '',
+            ethEur: '',
+            xrpEur: '',
+            btcDol: '',
+            ethDol: '',
+            xrpDol: ''
+
+
+        }
+    },
+
+    methods: {
+
+        setValuta(val) {
+
+            this.valuta = val;
+            this.calculate();
+
+        },
+        setCurrency(cur) {
+
+            this.selectedCurrency = cur;
+            this.calculate();
+
+        },
+
+        calculate() {
+
+            let count = this.inputCurrency;
+            let valuta = this.valuta;
+
+            let currency;
+
+            this.selectedCurrency == 'Bitcoin' && this.valuta == 'Euro' ? currency = this.btcEur  : '';
+            this.selectedCurrency == 'Bitcoin' && this.valuta == 'Dollar' ? currency = this.btcDol  : '';
+
+            this.selectedCurrency == 'Ether' && this.valuta == 'Euro' ? currency = this.ethEur  : '';
+            this.selectedCurrency == 'Ether' && this.valuta == 'Dollar' ? currency = this.ethDol  : '';
+
+            this.selectedCurrency == 'Ripple' && this.valuta == 'Euro' ? currency = this.xrpEur  : '';
+            this.selectedCurrency == 'Ripple' && this.valuta == 'Dollar' ? currency = this.xrpDol  : '';
+
+            this.outputVal = count * currency;
+            
+
+        },
+
+        call() {
+
+            axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XRP&tsyms=USD,EUR')
+                .then((response) => {
+                
+                this.btcEur = response.data.BTC.EUR;
+                this.ethEur = response.data.ETH.EUR;
+                this.xrpEur = response.data.XRP.EUR;
+                this.btcDol = response.data.BTC.USD;
+                this.ethDol = response.data.ETH.USD;
+                this.xrpDol = response.data.XRP.USD;
+
+                this.calculate();
+                
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        },
+
+        getValue() {
+
+            this.call();
+
+            setInterval(() => {
+
+                this.call();
+
+                console.log('fired');
+
+            }, 60000);
+
+        }
+
+    },
+
+    created() {
+        this.getValue();
+    }
 
 }
 </script>
