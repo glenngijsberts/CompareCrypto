@@ -52,7 +52,7 @@
 
 <script>
 
-import {mapState, mapMutations} from 'vuex'
+import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
 
@@ -73,7 +73,7 @@ export default {
 
     methods: {
 
-        ...mapMutations(['getValue'])
+        ...mapActions(['getValue'])
 
     },
 

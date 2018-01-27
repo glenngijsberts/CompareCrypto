@@ -13,7 +13,7 @@ export default {
 
     mutations: {
 
-        getValue(state) {
+        call(state) {
 
             axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XRP&tsyms=USD,EUR')
                 .then((response) => {
@@ -27,26 +27,6 @@ export default {
                     console.log(error);
                 });
 
-            setInterval(() => {
-
-                axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XRP&tsyms=USD,EUR')
-                    .then((response) => {
-
-                        state.btc = response.data.BTC.EUR;
-                        state.eth = response.data.ETH.EUR;
-                        state.xrp = response.data.XRP.EUR;
-
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-
-                console.log('fired');
-
-            }, 120000);
-
-
-
         },
 
         setValuta(state, val) {
@@ -58,6 +38,24 @@ export default {
         setCurrency(state, cur) {
 
             state.currency = cur;
+
+        }
+
+    },
+
+    actions: {
+
+        getValue(context) {
+
+            context.commit('call');
+
+            setInterval(() => {
+
+                context.commit('call');
+
+                console.log('fired');
+
+            }, 120000);
 
         }
 
