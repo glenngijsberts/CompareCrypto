@@ -8,7 +8,7 @@
                 <div class="col-sm">
                     <div class="top-currency">
 
-                        <h3 class="currency-price">&euro; {{ this.returnValue(this.btc) }} </h3>
+                        <h3 class="currency-price">&euro; {{ btc }} </h3>
                         <h3 class="currency-name">Bitcoin in euro</h3>
 
                     </div>
@@ -18,7 +18,7 @@
 
                     <div class="top-currency">
 
-                        <h3 class="currency-price">&euro; {{ this.returnValue(this.eth) }}</h3>
+                        <h3 class="currency-price">&euro; {{ eth }}</h3>
                         <h3 class="currency-name">Ether in euro</h3>
 
                     </div>
@@ -29,7 +29,7 @@
 
                     <div class="top-currency">
 
-                        <h3 class="currency-price">&euro; {{ this.returnValue(this.xrp) }}</h3>
+                        <h3 class="currency-price">&euro; {{ xrp }}</h3>
                         <h3 class="currency-name">Ripple in euro</h3>
 
                     </div>
@@ -40,7 +40,7 @@
 
             <div class="row mt-5">
                 <div class="col-sm">
-                    <a class="btn btn-ghost-blue">Bekijk de top 10<i class="ion-chevron-right"></i></a>
+                    <a class="btn btn-ghost-blue">Bekijk de koers<i class="ion-chevron-right"></i></a>
                 </div>
             </div>
 
@@ -51,6 +51,9 @@
 </template>
 
 <script>
+
+import {mapState, mapMutations} from 'vuex'
+
 export default {
 
     name: 'topcurrencies',
@@ -58,54 +61,19 @@ export default {
     data() {
         return {
 
-            btc: '',
-            xrp: '',
-            eth: ''
 
         }
     },
 
+    computed: {
+
+        ...mapState(['btc', 'eth', 'xrp']),
+
+    },
+
     methods: {
 
-        returnValue(val) {
-            if(val == '') {
-                return 0;
-            } else {
-                return val
-            }
-        },
-
-        call() {
-
-            axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XRP&tsyms=USD,EUR')
-                .then((response) => {
-                
-                this.btc = response.data.BTC.EUR;
-                this.eth = response.data.ETH.EUR;
-                this.xrp = response.data.XRP.EUR;
-                
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-
-        },
-
-        getValue() {
-
-            this.call();
-
-            setInterval(() => {
-
-                this.call();
-
-                console.log('fired');
-
-            }, 60000);
-
-
-
-        }
+        ...mapMutations(['getValue'])
 
     },
 

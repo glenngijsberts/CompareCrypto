@@ -4,6 +4,9 @@ import VueRouter from 'vue-router'
 //import axios for AJAX Calls
 window.axios = require('axios');
 
+import Vuex from 'vuex'
+
+Vue.use(Vuex);
 Vue.use(VueRouter);
 
 //Components
@@ -20,9 +23,13 @@ const router = new VueRouter({
   routes // short for `routes: routes`
 });
 
+//Import store for state management
+import store from './store'
+
 //Vue Init
 new Vue({
   el: '#app',
   router,
+  store: new Vuex.Store(store),
   render: h => h(App)
 })

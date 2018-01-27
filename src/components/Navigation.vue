@@ -17,14 +17,14 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Grafieken</a>
+                        <a class="nav-link" href="#">Koers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Aanmelden</a>
+                        <a class="nav-link" href="#calculate">Bereken waarde</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Registreren</a>
-                    </li>
+
+                    <!-- Login and register will be included in a later version -->
+
                     <button class="btn btn-ghost-white my-2 my-sm-0" type="submit">Contact</button>
                 </ul>
             </div>

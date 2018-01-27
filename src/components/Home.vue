@@ -40,10 +40,10 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <h4>Top 10 Crypto</h4>
-                                    <p>Op deze website zie je de top 10 cryptocurrencies die elk uur bijgewerkt wordt. Bekijk market cap, actuele prijzen en meer.</p>
-                                    <a href="#"> Meer informatie
+                                    <p>Wij willen ons gaan richten op de top 10 cryptocurrencies. Voor nu zijn de volgende currencies beschikbaar: Bitcoin, Ether,  Ripple.</p>
+                                    <!-- <a href="#"> Meer informatie
                                         <i class="ion-chevron-right"></i>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                         </div>
@@ -63,10 +63,8 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <h4>Feels like home</h4>
-                                    <p>Maak een account aan om je persoonlijke voorkeuren op te slaan en snel en gemakkelijk door te gaan</p>
-                                    <a href="#"> Registreren
-                                        <i class="ion-chevron-right"></i>
-                                    </a>
+                                    <p>Binnekort: Maak een account aan om je persoonlijke voorkeuren op te slaan en snel aan de slag te gaan</p>
+                                    <a href="#calculate"> Binnekort beschikbaar!</a>
                                 </div>
                             </div>
                         </div>
@@ -82,10 +80,8 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <h4>Alerts</h4>
-                                    <p>Al een account? Ontvang een notificatie als een cryptocurrencie gunstig staat</p>
-                                    <a href="#"> Inloggen
-                                        <i class="ion-chevron-right"></i>
-                                    </a>
+                                    <p>Binnekort: Maak een account aan om alerts te ontvangen wanneer een currencie een bepaalde waarde heeft</p>
+                                    <a href="#"> Binnekort beschikbaar! </a>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +94,7 @@
 
         </section>
 
-        <Calculate />
+        <Calculate id="calculate" />
 
     </div>
 

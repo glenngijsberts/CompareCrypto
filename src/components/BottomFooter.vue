@@ -1,7 +1,8 @@
 <template>
-  
+    
       <footer>
 
+        <!-- Footer update in a later version -->    
         <div class="main-footer">
 
             <div class="container">
@@ -9,39 +10,41 @@
 
                     <div class="col-md-3">
                         <h4>Meer informatie</h4>
-                        <ul>
+                        <p>Binnekort meer informatie. Het belangrijkste om te melden is dat wij geen wallets aanbieden en/of currencies verkopen. Deze website is puur voor het omrekenen van je currencies.</p>
+                        <!-- <ul>
                             <li><a href="#">Cryptocurrencies</a></li>
                             <li><a href="#">Bitcoin</a></li>
                             <li><a href="#">Welke portomonee</a></li>
                             <li><a href="#">Hoe koop ik cryptocurrencies</a></li>
-                        </ul>
+                        </ul> -->
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4>Currency</h4>
+                        <p>Op het moment is de applicatie alleen in euro beschikbaar en geschikt voor de currencies: Bitcoin, Ether en Ripple.</p>
+                            <!-- <select id="inputState" class="form-control">
+                                <option selected>Euro</option>
+                                <option>Dollar</option>
+                            </select> -->
                     </div>
 
                     <div class="col-md-3">
                         <h4>Over ons</h4>
-                        <ul>
+                        <p>CompareCrypto is een iniatief van Glenn Gijsberts, Student op De Haagse Hogeschool. Deze webapplicatie is opgezet met als doel om meer te leren over het ontwikkelen van webapplicaties.</p>
+                        <!-- <ul>
                             <li><a href="#">Ontwikkelaar</a></li>
                             <li><a href="#">Doel</a></li>
                             <li><a href="#">Contactgegevens</a></li>
                             <li><a href="#">Zelf een app?</a></li>
-                        </ul>
+                        </ul> -->
                     </div>
 
                     <div class="col-md-3">
                         <h4>Social Media</h4>
                         <ul>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Github</a></li>
-                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="https://twitter.com/glenngijsberts">Twitter</a></li>
+                            <li><a href="https://github.com/glenngijsberts">Github</a></li>
                         </ul>
-                    </div>
-
-                    <div class="col-md-3">
-                        <h4>Currency</h4>
-                            <select id="inputState" class="form-control">
-                                <option selected>Euro</option>
-                                <option>Dollar</option>
-                            </select>
                     </div>
 
                 </div>
@@ -103,6 +106,11 @@ footer .copyright-footer p {
     color: var(--brand);
     margin: 0;
     text-align: center;
+}
+
+footer p {
+    color: var(--grey);
+    font-size: 12px;
 }
 
 </style>
