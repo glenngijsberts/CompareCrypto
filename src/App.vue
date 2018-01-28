@@ -161,7 +161,7 @@ header.hero-home {
     justify-content: center;
     align-items: center;
     align-content: center;
-    height: 85%;
+    height: 100%;
     padding: 10px;
 }
 

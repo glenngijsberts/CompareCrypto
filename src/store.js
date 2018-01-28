@@ -57,6 +57,20 @@ export default {
 
             }, 120000);
 
+        },
+
+        setValuta(context, val) {
+
+            context.commit('setValuta', val);
+            context.commit('call');
+
+        },
+
+        setCurrency(context, cur) {
+
+            context.commit('setCurrency', cur);
+            context.commit('call');
+
         }
 
     }

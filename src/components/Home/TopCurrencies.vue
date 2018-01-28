@@ -9,7 +9,7 @@
                     <div class="top-currency">
 
                         <h3 class="currency-price">&euro; {{ btc }} </h3>
-                        <h3 class="currency-name">Bitcoin in euro</h3>
+                        <h3 class="currency-name">Bitcoin in {{ valuta }}</h3>
 
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                     <div class="top-currency">
 
                         <h3 class="currency-price">&euro; {{ eth }}</h3>
-                        <h3 class="currency-name">Ether in euro</h3>
+                        <h3 class="currency-name">Ether in {{ valuta }}</h3>
 
                     </div>
 
@@ -30,7 +30,7 @@
                     <div class="top-currency">
 
                         <h3 class="currency-price">&euro; {{ xrp }}</h3>
-                        <h3 class="currency-name">Ripple in euro</h3>
+                        <h3 class="currency-name">Ripple in {{ valuta }}</h3>
 
                     </div>
 
@@ -67,19 +67,17 @@ export default {
 
     computed: {
 
-        ...mapState(['btc', 'eth', 'xrp']),
+        ...mapState(['btc', 'eth', 'xrp', 'valuta']),
 
     },
 
     methods: {
 
-        ...mapActions(['getValue'])
 
     },
 
     created() {
 
-        this.getValue();
 
     }
 

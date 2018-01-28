@@ -36,7 +36,7 @@
                             <button class="btn btn-ghost-white dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ valuta }}</button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" @click="setValuta('Euro')">Euro</a>
-                                <!-- <a class="dropdown-item" @click="setValuta('Dollar')">Dollar</a> -->
+                                <a class="dropdown-item" @click="setValuta('Dollar')">Dollar</a>
                             </div>
                         </div>
                         <input type="number" class="form-control" v-model="outputVal" disabled>
@@ -82,21 +82,7 @@ export default {
 
     methods: {
 
-        ...mapActions(['getValue']),
-
-        setCurrency(cur) {
-
-            this.$store.commit('setCurrency', cur);
-            this.calculate();
-
-        },
-
-        setValuta(val) {
-
-            this.$store.commit('setValuta', val);
-            this.calculate();
-
-        },
+        ...mapActions(['setCurrency', 'setValuta']),
 
         calculate() {
 
@@ -121,7 +107,7 @@ export default {
     },
 
     created() {
-        this.getValue();
+
     }
 
 }

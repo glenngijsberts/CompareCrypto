@@ -25,10 +25,20 @@ const router = new VueRouter({
 
 //Import store for state management
 import store from './store'
+import {mapActions} from 'vuex'
 
 //Vue Init
 new Vue({
   el: '#app',
+
+  methods: {
+    ...mapActions(['getValue'])
+  },
+
+  created() {
+    this.getValue();
+  },
+
   router,
   store: new Vuex.Store(store),
   render: h => h(App)

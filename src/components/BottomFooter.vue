@@ -20,15 +20,6 @@
                     </div>
 
                     <div class="col-md-3">
-                        <h4>Currency</h4>
-                        <p>Op het moment is de applicatie alleen in euro beschikbaar en geschikt voor de currencies: Bitcoin, Ether en Ripple.</p>
-                            <!-- <select id="inputState" class="form-control">
-                                <option selected>Euro</option>
-                                <option>Dollar</option>
-                            </select> -->
-                    </div>
-
-                    <div class="col-md-3">
                         <h4>Over ons</h4>
                         <p>CompareCrypto is een iniatief van Glenn Gijsberts, Student op De Haagse Hogeschool. Deze webapplicatie is opgezet met als doel om meer te leren over het ontwikkelen van webapplicaties.</p>
                         <!-- <ul>
@@ -47,6 +38,13 @@
                         </ul>
                     </div>
 
+                    <div class="col-md-3">
+                        <h4>Valuta</h4>
+                        <!-- Valuta component for setting valuta -->
+                        <Valuta />
+
+                    </div>
+
                 </div>
             </div>
         
@@ -62,9 +60,15 @@
 </template>
 
 <script>
+
+import Valuta from './Valuta.vue'
+
 export default {
 
-    name: 'bottomfooter'
+    name: 'bottomfooter',
+    components: {
+        Valuta
+    }
 
 }
 </script>
