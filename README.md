@@ -9,7 +9,7 @@
  * ~~Centralize data with vuex~~ 
  * ~~Refactor the calculate component~~
  * ~~Make it possible to use other valuta's~~
- * Make the AJAX call based on the currency and valuta state to refactor the components
+ * ~~Make the AJAX call based on the currency and valuta state to refactor the components~~
  * Create a subscribe component for Mailchimp newsletter
  * Create info pages about cryptocurrencies
  * Create a backend for users to register and login for user preferences

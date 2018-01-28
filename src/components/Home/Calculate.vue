@@ -22,7 +22,7 @@
                                 <a class="dropdown-item" @click="setCurrency('Ripple')">Ripple</a>
                             </div>
                         </div>
-                        <input type="number" class="form-control" v-model="inputCurrency" @keyup="calculate()" @change="calculate()" min="0">
+                        <input type="number" class="form-control" v-model="inputCurrency" @keyup="resetZero" min="0">
                     </div>
 
                 </div>
@@ -39,7 +39,7 @@
                                 <a class="dropdown-item" @click="setValuta('Dollar')">Dollar</a>
                             </div>
                         </div>
-                        <input type="number" class="form-control" v-model="outputVal" disabled>
+                        <input type="number" class="form-control" :value="outputVal" disabled>
                     </div>
 
                 </div>
@@ -68,31 +68,20 @@ export default {
     data() {
         return {
 
-            inputCurrency: 0,
-            outputVal: 0,
+            inputCurrency: 0
 
         }
     },
 
     computed: {
 
-        ...mapState(['valuta', 'currency'])
+        ...mapState(['valuta', 'currency']),
 
-    },
-
-    methods: {
-
-        ...mapActions(['setCurrency', 'setValuta']),
-
-        calculate() {
-
-            if(this.inputCurrency == '') {
-                this.inputCurrency = 0;
-            }
+        outputVal() {
 
             let count = this.inputCurrency;
-            let valuta = this.$store.state.valuta;
-            let currency = this.$store.state.currency;
+            let valuta = this.valuta;
+            let currency = this.currency;
 
             let val;
 
@@ -100,9 +89,22 @@ export default {
             currency == 'Ether' ? val = this.$store.state.eth : ''
             currency == 'Ripple' ? val = this.$store.state.xrp : ''
 
-            this.outputVal = count * val;
-            
-        },
+            return count * val;
+
+        }
+
+    },
+
+    methods: {
+
+        ...mapActions(['setCurrency', 'setValuta']),
+
+        resetZero() {
+            if(this.inputCurrency == '') {
+                return this.inputCurrency = 0;
+            }
+        }
+
 
     },
 

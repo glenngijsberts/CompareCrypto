@@ -15,12 +15,19 @@ export default {
 
         call(state) {
 
-            axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XRP&tsyms=USD,EUR')
+            var cur;
+
+            state.valuta == 'Dollar' ? cur = 'USD' : cur = 'EUR' ;
+
+            axios.get(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XRP&tsyms=${cur}`)
                 .then((response) => {
 
-                    state.btc = response.data.BTC.EUR;
-                    state.eth = response.data.ETH.EUR;
-                    state.xrp = response.data.XRP.EUR;
+                    let res = cur;
+                    
+                    res == 'EUR' ? state.btc = response.data.BTC.EUR : state.btc = response.data.BTC.USD
+                    res == 'EUR' ? state.eth = response.data.ETH.EUR : state.eth = response.data.ETH.USD
+                    res == 'EUR' ? state.xrp = response.data.XRP.EUR : state.xrp = response.data.XRP.USD
+    
 
                 })
                 .catch(function (error) {

@@ -21,7 +21,7 @@
 
                     <div class="col-md-3">
                         <h4>Over ons</h4>
-                        <p>CompareCrypto is een iniatief van Glenn Gijsberts, Student op De Haagse Hogeschool. Deze webapplicatie is opgezet met als doel om meer te leren over het ontwikkelen van webapplicaties.</p>
+                        <p>CompareCrypto is een iniatief van Glenn Gijsberts, Student op De Haagse Hogeschool. Met het opzetten van deze webapplicatie hoop ik meer praktijk ervaring op te doen.</p>
                         <!-- <ul>
                             <li><a href="#">Ontwikkelaar</a></li>
                             <li><a href="#">Doel</a></li>
