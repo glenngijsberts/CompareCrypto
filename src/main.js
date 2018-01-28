@@ -12,10 +12,12 @@ Vue.use(VueRouter);
 //Components
 import App from './App.vue'
 import Home from './components/Home.vue'
+import Charts from './components/Charts.vue'
 
 //Routes
 const routes = [
-  { path: '/', name: 'home', component: Home }
+  { path: '/', name: 'home', component: Home },
+  { path: '/koers', name: 'charts', component: Charts }
 ];
 
 const router = new VueRouter({

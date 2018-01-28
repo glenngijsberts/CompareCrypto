@@ -113,6 +113,18 @@ export default {
         Hero,
         Calculate,
         TopCurrencies
+    },
+
+    methods: {
+
+      log() {
+          console.log(this.$route.path);
+      }
+
+    },
+
+    created() {
+      this.log();
     }
 
 }

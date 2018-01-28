@@ -17,7 +17,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Koers</a>
+                        <router-link class="nav-link" :to="{ name: 'charts'}">Koers</router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#calculate">Bereken waarde</a>

@@ -78,7 +78,6 @@ export default {
 footer .main-footer {
     background-color: #fafafa;
     padding: 60px;
-    border-top: 2px solid var(--light);
 }
 
 footer .main-footer h4 {

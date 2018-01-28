@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <Navigation />  
+    <Navigation v-if="isHome" />  
 
     <router-view></router-view>
 
@@ -28,6 +28,18 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+
+  computed: {
+
+      isHome() {
+          if(this.$route.path == '/') {
+              return true;
+          } else {
+              return false;
+          }
+      }
+
   }
 
 }
