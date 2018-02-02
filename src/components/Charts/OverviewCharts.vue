@@ -10,9 +10,21 @@
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"> Dit is bitcoin</div>
-        <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"> Dit is ether</div>
-        <div class="tab-pane" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"> xrp </div>
+        <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"> 
+            
+             <line-chart :data="this.btc.chartData" :options="this.options"></line-chart>
+
+        </div>
+        <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+            <line-chart :data="this.eth.chartData" :options="this.options"></line-chart>
+
+        </div>
+        <div class="tab-pane" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+            <line-chart :data="this.xrp.chartData" :options="this.options"></line-chart>
+
+        </div>
     </div>
 
     </div>
@@ -20,7 +32,88 @@
 </template>
 
 <script>
+
+import LineChart from './LineChart'
+
 export default {
+
+    name: 'OverviewCharts',
+    components: {
+        LineChart
+    },
+
+    data() {
+        return {
+
+            btc: {
+                chartData: {
+                    labels: ["28/1", "29/1", "30/1", "31/1", "1/2", "2/2", "3/2"],
+                    datasets: [{
+                        backgroundColor: '#59a4eca1',
+                        borderColor: '#2F72AF',
+                        data: [9500, 9600, 9700, 9000, 9100, 8900, 9300],
+                    }]
+                }
+            },
+
+            eth: {
+                chartData: {
+                    labels: ["28/1", "29/1", "30/1", "31/1", "1/2", "2/2", "3/2"],
+                    datasets: [{
+                        backgroundColor: '#59a4eca1',
+                        borderColor: '#2F72AF',
+                        data: [900, 980, 960, 960, 970, 980, 1000],
+                    }]
+                }
+            },
+
+            xrp: {
+                chartData: {
+                    labels: ["28/1", "29/1", "30/1", "31/1", "1/2", "2/2", "3/2"],
+                    datasets: [{
+                        backgroundColor: '#59a4eca1',
+                        borderColor: '#2F72AF',
+                        data: [1.00, 1.20, 1.05, 1.00, 1.00, 1.00, 1.08],
+                    }]
+                }
+            },
+
+            options: {
+                responsive: true, 
+                maintainAspectRatio: false, 
+                legend: { 
+                    display: false, 
+                    labels: { defaultFontFamily: "'Rubik', 'Source Sans Pro'" }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            maxTicksLimit: 5,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        }
+                     }],
+                    xAxes: [{
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        }
+                    }]
+                }
+            }
+
+        }
+    }
 
 }
 </script>
@@ -71,4 +164,3 @@ export default {
     }   
 
 </style>
-
