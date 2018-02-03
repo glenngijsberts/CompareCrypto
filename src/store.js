@@ -9,6 +9,8 @@ export default {
         currency: 'Bitcoin',
         valuta: 'Euro',
 
+
+
     },
 
     mutations: {

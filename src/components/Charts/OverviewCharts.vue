@@ -12,23 +12,23 @@
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-            <Value currency="Bitcoin" /> 
+            <Value currency="Bitcoin" :current="this.btc" /> 
             
-             <line-chart :data="this.btc.chartData" :options="this.options"></line-chart>
+             <line-chart :data="this.btcChart.chartData" :options="this.options"></line-chart>
 
         </div>
         <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
-            <Value currency="Ether" /> 
+            <Value currency="Ether" :current="this.eth" /> 
 
-            <line-chart :data="this.eth.chartData" :options="this.options"></line-chart>
+            <line-chart :data="this.ethChart.chartData" :options="this.options"></line-chart>
 
         </div>
         <div class="tab-pane" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
-            <Value currency="Ripple" /> 
+            <Value currency="Ripple" :current="this.xrp" /> 
 
-            <line-chart :data="this.xrp.chartData" :options="this.options"></line-chart>
+            <line-chart :data="this.xrpChart.chartData" :options="this.options"></line-chart>
 
         </div>
     </div>
@@ -42,6 +42,8 @@
 import LineChart from './LineChart'
 import Value from './Value.vue'
 
+import {mapState} from 'vuex'
+
 export default {
 
     name: 'OverviewCharts',
@@ -50,10 +52,16 @@ export default {
         Value,
     },
 
+    computed: {
+
+        ...mapState(['btc', 'eth', 'xrp']),
+
+    },
+
     data() {
         return {
 
-            btc: {
+            btcChart: {
                 chartData: {
                     labels: ["28/1", "29/1", "30/1", "31/1", "1/2", "2/2", "3/2"],
                     datasets: [{
@@ -64,7 +72,7 @@ export default {
                 }
             },
 
-            eth: {
+            ethChart: {
                 chartData: {
                     labels: ["28/1", "29/1", "30/1", "31/1", "1/2", "2/2", "3/2"],
                     datasets: [{
@@ -75,7 +83,7 @@ export default {
                 }
             },
 
-            xrp: {
+            xrpChart: {
                 chartData: {
                     labels: ["28/1", "29/1", "30/1", "31/1", "1/2", "2/2", "3/2"],
                     datasets: [{
