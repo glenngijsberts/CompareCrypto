@@ -10,17 +10,23 @@
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"> 
+        <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+            <Value currency="Bitcoin" /> 
             
              <line-chart :data="this.btc.chartData" :options="this.options"></line-chart>
 
         </div>
         <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
+            <Value currency="Ether" /> 
+
             <line-chart :data="this.eth.chartData" :options="this.options"></line-chart>
 
         </div>
         <div class="tab-pane" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+            <Value currency="Ripple" /> 
 
             <line-chart :data="this.xrp.chartData" :options="this.options"></line-chart>
 
@@ -34,12 +40,14 @@
 <script>
 
 import LineChart from './LineChart'
+import Value from './Value.vue'
 
 export default {
 
     name: 'OverviewCharts',
     components: {
-        LineChart
+        LineChart,
+        Value,
     },
 
     data() {
@@ -60,8 +68,8 @@ export default {
                 chartData: {
                     labels: ["28/1", "29/1", "30/1", "31/1", "1/2", "2/2", "3/2"],
                     datasets: [{
-                        backgroundColor: '#59a4eca1',
-                        borderColor: '#2F72AF',
+                        backgroundColor: '#ecbf599e',
+                        borderColor: '#e47d13',
                         data: [900, 980, 960, 960, 970, 980, 1000],
                     }]
                 }
@@ -71,8 +79,8 @@ export default {
                 chartData: {
                     labels: ["28/1", "29/1", "30/1", "31/1", "1/2", "2/2", "3/2"],
                     datasets: [{
-                        backgroundColor: '#59a4eca1',
-                        borderColor: '#2F72AF',
+                        backgroundColor: '#ec59596b',
+                        borderColor: '#d43434',
                         data: [1.00, 1.20, 1.05, 1.00, 1.00, 1.00, 1.08],
                     }]
                 }
