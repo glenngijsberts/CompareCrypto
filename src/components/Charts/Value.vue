@@ -3,17 +3,19 @@
     <div class="chart-values">
 
         <div class="current-value">
-            <h3>{{ this.current }}</h3>
+            <h3><span v-if="valuta == 'Euro'">&euro;</span><span v-else>$</span>{{ this.current }}</h3>
             <h4>{{ this.currency }} Prijs in &euro;</h4>
         </div>
 
         <div class="change-percentage">
-            <h3>{{ this.change }}%</h3>
+            <h3 v-html="$options.filters.change(this.change)"></h3>
+            <!-- <h3>{{ this.change | change }}%</h3> -->
             <h4>Koers afgelopen 24 uur</h4>
         </div>
 
         <div class="weekChange-percentage">
-            <h3>{{ this.weekChange }}%</h3>
+            <h3 v-html="$options.filters.change(this.weekChange)"></h3>
+            <!-- <h3>{{ this.weekChange | change }}%</h3> -->
             <h4>Koers afgelopen week</h4>
         </div>
 
@@ -22,6 +24,9 @@
 </template>
 
 <script>
+
+import {mapState} from 'vuex'
+
 export default {
 
     name: 'value',
@@ -32,6 +37,29 @@ export default {
         change: {default: 0},
         weekChange: {default: 0}
 
+    },
+
+    computed: {
+
+        ...mapState(['valuta']),
+
+    },
+
+    filters: {
+        change: (value) => {
+
+            if(value < 0) {
+                
+                let outcome = value.toString().slice(1);
+
+               
+                return `<h3><span style="color: lightcoral">-</span> ${outcome}</h3>`;
+                
+            } else {
+                return `<h3><span style="color: lightgreen">+</span> ${value}</h3>`;
+            }
+
+        }
     }
 
 }
@@ -65,6 +93,13 @@ export default {
 
         }
 
+    }
+
+    span.positive-change {
+        color: lightgreen;
+    }
+    span.negative-change {
+        color: lightcoral;
     }
 
 

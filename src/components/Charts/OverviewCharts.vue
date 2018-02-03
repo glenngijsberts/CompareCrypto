@@ -12,21 +12,21 @@
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-            <Value currency="Bitcoin" :current="this.btc" /> 
+            <Value currency="Bitcoin" :current="this.btc" :change="this.currencyChanges.btc.short" :week-change="this.currencyChanges.btc.long" /> 
             
              <line-chart :data="this.btcChart.chartData" :options="this.options"></line-chart>
 
         </div>
         <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
-            <Value currency="Ether" :current="this.eth" /> 
+            <Value currency="Ether" :current="this.eth" :change="this.currencyChanges.eth.short" :week-change="this.currencyChanges.eth.long" /> 
 
             <line-chart :data="this.ethChart.chartData" :options="this.options"></line-chart>
 
         </div>
         <div class="tab-pane" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
-            <Value currency="Ripple" :current="this.xrp" /> 
+            <Value currency="Ripple" :current="this.xrp" :change="this.currencyChanges.xrp.short" :week-change="this.currencyChanges.xrp.long" /> 
 
             <line-chart :data="this.xrpChart.chartData" :options="this.options"></line-chart>
 
@@ -54,7 +54,7 @@ export default {
 
     computed: {
 
-        ...mapState(['btc', 'eth', 'xrp']),
+        ...mapState(['btc', 'eth', 'xrp', 'currencyChanges']),
 
     },
 

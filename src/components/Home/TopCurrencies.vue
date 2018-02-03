@@ -8,7 +8,7 @@
                 <div class="col-sm">
                     <div class="top-currency">
 
-                        <h3 class="currency-price">&euro; {{ btc }} </h3>
+                        <h3 class="currency-price"><span v-if="valuta == 'Euro'">&euro;</span><span v-else>$</span> {{ btc }} </h3>
                         <h3 class="currency-name">Bitcoin in {{ valuta }}</h3>
 
                     </div>
@@ -18,7 +18,7 @@
 
                     <div class="top-currency">
 
-                        <h3 class="currency-price">&euro; {{ eth }}</h3>
+                        <h3 class="currency-price"><span v-if="valuta == 'Euro'">&euro;</span><span v-else>$</span> {{ eth }}</h3>
                         <h3 class="currency-name">Ether in {{ valuta }}</h3>
 
                     </div>
@@ -29,7 +29,7 @@
 
                     <div class="top-currency">
 
-                        <h3 class="currency-price">&euro; {{ xrp }}</h3>
+                        <h3 class="currency-price"><span v-if="valuta == 'Euro'">&euro;</span><span v-else>$</span> {{ xrp }}</h3>
                         <h3 class="currency-name">Ripple in {{ valuta }}</h3>
 
                     </div>
@@ -40,7 +40,7 @@
 
             <div class="row mt-5">
                 <div class="col-sm">
-                    <a class="btn btn-ghost-blue">Bekijk de koers<i class="ion-chevron-right"></i></a>
+                    <router-link to="/koers" class="btn btn-ghost-blue">Bekijk de koers<i class="ion-chevron-right"></i></router-link>
                 </div>
             </div>
 

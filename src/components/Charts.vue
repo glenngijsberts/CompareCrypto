@@ -1,6 +1,6 @@
 <template>
 
-    <header class="hero-home">
+    <header class="hero-home charts">
 
             <h2 class="title">Bekijk de koersen van verschillende currencies</h2>
 
@@ -31,6 +31,11 @@ h2.title {
     color: white;
     text-align: center;
     padding-top: 60px;
+}
+
+.hero-home.charts {
+    height: 100%;
+    padding-bottom: 80px;
 }
 
 </style>

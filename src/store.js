@@ -9,7 +9,22 @@ export default {
         currency: 'Bitcoin',
         valuta: 'Euro',
 
+        currencyChanges: {
 
+            btc: {
+                short: 0,
+                long: 0
+            },
+            eth: {
+                short: 0,
+                long: 0
+            },
+            xrp: {
+                short: 0,
+                long: 0
+            },
+
+        }
 
     },
 
@@ -38,6 +53,29 @@ export default {
 
         },
 
+        getChanges(state) {
+
+            axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=5`)
+                .then((response) => {
+
+                    state.currencyChanges.btc.short = response.data[0].percent_change_24h;
+                    state.currencyChanges.btc.long = response.data[0].percent_change_7d;
+
+                    state.currencyChanges.eth.short = response.data[1].percent_change_24h;
+                    state.currencyChanges.eth.long = response.data[1].percent_change_7d;
+
+                    state.currencyChanges.xrp.short = response.data[2].percent_change_24h;
+                    state.currencyChanges.xrp.long = response.data[2].percent_change_7d;
+
+
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+
+        },
+
         setValuta(state, val) {
 
             state.valuta = val;
@@ -57,10 +95,12 @@ export default {
         getValue(context) {
 
             context.commit('call');
+            context.commit('getChanges');
 
             setInterval(() => {
 
                 context.commit('call');
+                context.commit('getChanges');
 
                 console.log('fired');
 
