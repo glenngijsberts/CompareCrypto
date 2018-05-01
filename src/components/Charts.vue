@@ -6,6 +6,12 @@
 
             <OverviewCharts />
 
+            <div class="return-home">
+
+                <router-link to="/">&larr; Terug naar homepagina</router-link>
+
+            </div>
+
     </header>
 
 </template>
@@ -24,7 +30,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 h2.title {
     font-size: 36px;
@@ -36,6 +42,16 @@ h2.title {
 .hero-home.charts {
     height: 100%;
     padding-bottom: 80px;
+}
+
+.return-home {
+    text-align: center;
+    padding-top: 80px;
+
+    a {
+        color: white;
+    }
+
 }
 
 </style>

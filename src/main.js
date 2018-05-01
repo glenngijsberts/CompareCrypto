@@ -22,7 +22,10 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  routes // short for `routes: routes`
+  routes, // short for `routes: routes`
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 });
 
 //Import store for state management

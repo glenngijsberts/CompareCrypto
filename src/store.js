@@ -76,6 +76,15 @@ export default {
 
         },
 
+        getCharts(state) {
+
+            axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=EUR&aggregate=1&limit=1')
+                .then((response) => {
+                    console.log(response);
+                })
+
+        },
+
         setValuta(state, val) {
 
             state.valuta = val;
@@ -96,6 +105,7 @@ export default {
 
             context.commit('call');
             context.commit('getChanges');
+            context.commit('getCharts');
 
             setInterval(() => {
 
