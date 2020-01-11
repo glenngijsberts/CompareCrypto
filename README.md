@@ -2,4 +2,4 @@
 
 > Website for comparing cryptocurrencies.
 
-![Preview](https://ibb.co/h91h1wK)
+![Preview](https://i.ibb.co/B3KdKFg/Schermafbeelding-2020-01-11-om-15-44-32.png)
